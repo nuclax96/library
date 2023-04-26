@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
+:root {
+  --button: #f1f6f9;
+  --button-hover: cadetblue;
+  --button-color: #212a3e;
+  --box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -75,8 +82,8 @@ footer {
 
 .btn-status:hover,
 .btn-remove:hover {
-  background-color: cadetblue;
-  color: white;
+  background-color: var(--button-hover);
+  color: var(--button-color);
   transition: all 0.2s;
 }
 .add-book {
@@ -109,8 +116,7 @@ footer {
   padding: 16px;
   border-radius: 8px;
   border: none;
-  background-color: rgb(36, 148, 45);
-  background-color: #f1f6f9;
+  background-color: var(--button);
   color: #212a3e;
   width: 100px;
   font-size: 18px;
@@ -118,7 +124,7 @@ footer {
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 .add-book-btn:hover {
-  background-color: #394867;
+  background-color: var(--button-hover);
 }
 
 .modal {
@@ -147,4 +153,16 @@ footer {
 .add-container {
   display: flex;
   justify-content: center;
+}
+
+.form-submit-btn {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: var(--box-shadow);
+}
+
+.form-submit-btn:hover {
+  background-color: var(--button-hover);
+  color: var(--button-color);
 }

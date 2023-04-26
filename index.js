@@ -92,6 +92,7 @@ const handleFormSubmit = (e) => {
   tempObj.status = tempObj.status === "true" ? true : false;
   console.log(tempObj);
   insertCard(tempObj);
+  modal.classList.toggle("hidden");
 };
 
 addForm.addEventListener("submit", handleFormSubmit);
