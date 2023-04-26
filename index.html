@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>The Library</header>
+    <main>
+      <div class="add-book modal hidden">
+        <form method="post" action="#" class="add-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="title" />
+          <label for="author">Author</label>
+          <input type="text" id="author" name="author" />
+          <div>
+            <label for="read">Read</label>
+            <label for="read-yes">Yes</label>
+            <input type="radio" name="status" id="read-yes" value="true" />
+            <label for="read-no">No</label>
+            <input type="radio" name="status" id="read-no" value="false" />
+          </div>
+          <button type="submit" class="form-submit-btn">Submit</button>
+        </form>
+      </div>
+      <button type="button" class="add-book-btn">+Add</button>
+      <div class="book-list"></div>
+    </main>
+    <footer>Copyright &copy; Aditya Rastogi</footer>
+    <script src="./index.js"></script>
+  </body>
+</html>
