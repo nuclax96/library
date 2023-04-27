@@ -44,7 +44,6 @@ const createCardElement = (item, i) => {
   // 2. Status Btn
 
   statusBtn.addEventListener("click", (e) => {
-    console.log(e.target.parentNode);
     updateCard(e.target, "statusBtn");
   });
 
@@ -71,7 +70,6 @@ btnRemove.forEach((btn) => {
 });
 const insertCard = (obj) => {
   movieArr.push(obj);
-  console.log(obj);
   const arrLength = movieArr.length - 1;
   const createdElement = createCardElement(obj, arrLength);
   cardList.appendChild(createdElement);
@@ -90,7 +88,6 @@ const handleFormSubmit = (e) => {
     tempObj[name] = value;
   }
   tempObj.status = tempObj.status === "true" ? true : false;
-  console.log(tempObj);
   insertCard(tempObj);
   modal.classList.toggle("hidden");
 };
@@ -113,9 +110,21 @@ modal.addEventListener("click", (e) => {
 const updateCard = (item, updateEl) => {
   if (updateEl === "statusBtn") {
     const card = item.parentNode;
+
     item.textContent = item.textContent === "Read" ? "Not Read" : "Read";
+    card.childNodes.forEach((item) => {
+      if (item.classList.contains("btn-status")) {
+        if (item.textContent === "Read") {
+          item.classList.add("read");
+          item.classList.remove("unread");
+        }
+        if (item.textContent === "Not Read") {
+          item.classList.toggle("unread");
+          item.classList.remove("read");
+        }
+      }
+    });
     movieArr[card.dataset.arrIndex].status =
       item.textContent === "Read" ? true : false;
-    console.log(movieArr);
   }
 };

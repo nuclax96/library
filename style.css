@@ -5,6 +5,7 @@
   --button-hover: cadetblue;
   --button-color: #212a3e;
   --box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+  /* --box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4); */
 }
 
 * {
@@ -31,7 +32,7 @@ body {
   flex-direction: column;
   border-radius: 8px;
   border: none;
-  box-shadow: 3px 2px 5px 2px rgb(0, 0, 0, 0.2);
+  box-shadow: 3px 2px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 .card h3:first-child {
@@ -42,12 +43,15 @@ body {
 header {
   display: flex;
   grid-area: header;
-  background-color: #394867;
   text-align: center;
   font-size: 48px;
   color: white;
-  justify-content: center;
+  justify-content: space-between;
+  /* padding-left: 20px; */
   align-items: center;
+  background-color: #394867;
+  gap: 20px;
+  padding: 0 20px;
 }
 
 main {
@@ -86,6 +90,13 @@ footer {
   color: var(--button-color);
   transition: all 0.2s;
 }
+.btn-status.read {
+  box-shadow: 1px 1px 2px 2px rgba(29, 212, 54, 0.603);
+}
+.btn-status.unread {
+  box-shadow: 1px 1px 2px 2px rgba(209, 43, 21, 0.603);
+}
+
 .add-book {
   display: flex;
   justify-content: center;
@@ -139,6 +150,7 @@ footer {
   backdrop-filter: blur(5px);
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  transition: all 1s ease;
 }
 
 .status-radio {
@@ -153,6 +165,8 @@ footer {
 .add-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 28px;
+  margin-top: 28px;
 }
 
 .form-submit-btn {
