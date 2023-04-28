@@ -13,6 +13,13 @@ const movieArr = [
   },
 ];
 
+const getLocalStorageArr = () => {
+  const arrTemp = localStorage.getItem("movieArr");
+  let parsedArr = JSON.parse(arrTemp);
+  //   console.log(parsedArr);
+  return parsedArr ? parsedArr : [];
+};
+
 const createCardElement = (item, i) => {
   const divCard = document.createElement("div");
   const headingTitle = document.createElement("h3");
@@ -38,6 +45,11 @@ const createCardElement = (item, i) => {
   // 1. Remove Btn
   removeBtn.addEventListener("click", (e) => {
     const el = e.target.parentNode;
+    // console.log(getLocalStorageArr(), el);
+    // const elIndex = e.target.parentNode;
+    const arr = getLocalStorageArr();
+
+    updateLocalStorage(arr, el.dataset.arrIndex);
     el.remove();
   });
 
@@ -57,20 +69,19 @@ const createCardElement = (item, i) => {
   return divCard;
 };
 
-// movieArr.push({
-//   title: "Wings of fire",
-//   author: "APJ Abdul Kalam",
-//   status: false,
+// btnRemove.forEach((btn) => {
+//   btn.addEventListener("click", (e) => {
+//     const el = e.target.parentNode;
+//     const arr = getLocalStorageArr();
+
+//     updateLocalStorage(arr, el.target.dataset("arrIndex"));
+//     el.remove();
+//   });
 // });
-btnRemove.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    const el = e.target.parentNode;
-    el.remove();
-  });
-});
 const insertCard = (obj) => {
-  movieArr.push(obj);
-  const arrLength = movieArr.length - 1;
+  //   movieArr.push(obj);
+  pushIntoLocalStorage(obj);
+  const arrLength = getLocalStorageArr().length - 1;
   const createdElement = createCardElement(obj, arrLength);
   cardList.appendChild(createdElement);
 };
@@ -97,7 +108,8 @@ addForm.addEventListener("submit", handleFormSubmit);
 addBookBtn.addEventListener("click", (e) => {
   modal.classList.toggle("hidden");
 });
-movieArr.forEach((item, i) => {
+
+getLocalStorageArr().forEach((item, i) => {
   createBookCard(item, i);
 });
 
@@ -124,7 +136,39 @@ const updateCard = (item, updateEl) => {
         }
       }
     });
+    console.log(movieArr);
     movieArr[card.dataset.arrIndex].status =
       item.textContent === "Read" ? true : false;
   }
 };
+
+// Local Storage implementaion testing
+
+const pushIntoLocalStorage = (obj) => {
+  let parsedArr = getLocalStorageArr();
+  console.log(parsedArr);
+  parsedArr.push(obj);
+  localStorage.removeItem("movieArr");
+  window.localStorage.setItem("movieArr", JSON.stringify(parsedArr));
+  //   console.log(localStorage.getItem("movieArr"));
+};
+
+const updateLocalStorage = (arr, index) => {
+  const tempArr = getLocalStorageArr();
+  tempArr.splice(index, 1);
+  console.log(arr, index, tempArr);
+  // push into local storage
+  localStorage.removeItem("movieArr");
+  localStorage.setItem("movieArr", JSON.stringify(tempArr));
+};
+
+// To Kill a Mockingbird, by Harper Lee To kill a mockingbird ...
+// 1984, by George Orwell 1984 ...
+// Harry Potter and the Philosopher’s Stone, by J.K. ...
+// The Lord of the Rings, by J.R.R. Tolkien ...
+// The Great Gatsby, by F. Scott Fitzgerald .
+// pushIntoLocalStorage({
+//   title: "The Great Gatsby",
+//   author: "F. Scott Fitzgerald",
+//   status: true,
+// });

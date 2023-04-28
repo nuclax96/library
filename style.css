@@ -16,7 +16,7 @@
 
 body {
   height: 100vh;
-  width: 100vw;
+  /* width: 100vw; */
   display: grid;
   grid-template-rows: 100px auto 40px;
   grid-template-areas: "header" "main" "footer";
@@ -44,10 +44,9 @@ header {
   display: flex;
   grid-area: header;
   text-align: center;
-  font-size: 48px;
+  font-size: 2.8rem;
   color: white;
   justify-content: space-between;
-  /* padding-left: 20px; */
   align-items: center;
   background-color: #394867;
   gap: 20px;
